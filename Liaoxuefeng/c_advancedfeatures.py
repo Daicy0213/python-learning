@@ -1,9 +1,13 @@
-""" 高级特性 """
+"""
+高级特性
+"""
 import collections.abc
 import os
 from collections.abc import Iterable
 
-"""一. 切片Slice"""
+"""
+一. 切片Slice
+"""
 
 # 1. range函数
 L = list(range(20))
@@ -27,7 +31,9 @@ def trim(s):
 
 print("trim函数的执行结果:", trim('  abc  '))
 
-"""二. 迭代"""
+"""
+二. 迭代
+"""
 
 L = [7, 1, 3, 9, 5]
 print("字符串是否可以迭代", isinstance('abc', Iterable))
@@ -55,8 +61,10 @@ print("L中的最大值和最小值为:", findMinAndMax(L))
 for i, value in enumerate(['A', 'B', 'C']):
     print(i, value)
 
-""" 三. 列表生成式 List Comprehensions
-用来创建list的生成式"""
+"""
+三. 列表生成式 List Comprehensions
+用来创建list的生成式
+"""
 
 print("生成1-10的平方:")
 List = [x * x for x in range(1, 11)]  # 生成1-10的平方
@@ -105,8 +113,10 @@ def lowerStrList(str_list):
 
 print(lowerStrList(L1))
 
-"""四. 生成器generator
-一边循环一边计算的机制"""
+"""
+四. 生成器generator
+一边循环一边计算的机制
+"""
 
 
 # 生成斐波那契数列的函数
@@ -141,7 +151,8 @@ for i in fib_generator(10):
     List.append(i)
 print(List)
 
-"""五. 迭代器
+"""
+五. 迭代器
 可以直接作用于for循环的对象统称为可迭代对象：Iterable
 可以使用isinstance()判断一个对象是否是Iterable对象
 
