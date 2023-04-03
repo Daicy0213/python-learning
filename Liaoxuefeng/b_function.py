@@ -1,9 +1,7 @@
-"""
-函数
-"""
 import math
 
 """
+函数
 一. 函数定义
 """
 
@@ -32,7 +30,7 @@ r = move(100, 100, 60, math.pi / 6)
 print(r)
 
 
-# 一元二次方程的求根函数
+# 一元二次方程的求根函数 ax^2 + bx + c =0 求x的值
 def quadratic(a, b, c):
     temp = math.sqrt(b ** 2 - 4 * a * c)
     r1 = (-b + temp) / (2 * a)
