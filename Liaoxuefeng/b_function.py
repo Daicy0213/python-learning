@@ -69,12 +69,39 @@ def calc(*nums):
 
 
 print(calc(1, 2, 3))
+# 也可以把list作为可变参数传入
+ns = [1, 2, 3, 4]
+print(calc(*ns))
 
 
-# 关键字参数
+# 关键字参数 关键字参数允许你传入0个或任意个含参数名的参数，这些关键字参数在函数内部自动组装为一个dict
 def print_person(name, age, **kw):
     print('name:', name, 'age:', age, 'other:', kw)
 
 
 extra = {'city': 'Beijing', 'job': 'Engineer'}
 print_person('Kobe', 40, **extra)
+
+
+# 递归函数 求阶乘
+def factorial(n):
+    if n == 1:
+        return 1
+    return n * factorial(n - 1)
+
+
+print(factorial(10))
+
+
+# 汉诺塔问题(hanoi),
+def move(n, a, b, c):
+    if n == 1:
+        print(a, '----->', c)
+    else:
+        move(n - 1, a, c, b)
+        move(1, a, b, c)
+        move(n - 1, b, a, c)
+
+
+print("汉诺塔问题")
+move(3, 'A', 'B', 'C')
