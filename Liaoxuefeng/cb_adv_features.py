@@ -5,7 +5,16 @@
 """
 
 g = (x * x for x in range(10))
+# 可以使用next()函数获得generator的下一个返回值
 print(next(g))
+print(next(g))
+print(next(g))
+
+# generator保存的是算法，每次调用next(g)，就计算出g的下一个元素的值，直到计算到最后一个元素，没有更多的元素时，抛出StopIteration的错误。
+# 也可以使用for循环进行迭代,因为generator也是可迭代对象
+print(type(isinstance(g)))
+for n in g:
+    print(n)
 
 
 # 生成斐波那契数列的函数
@@ -15,11 +24,11 @@ def fib(max):
     while n < max:
         print(b)
         a, b = b, a + b
-        # 相当于
+        # 相当于 (a, b) = (b, a+b)
         # t = (b, a + b)
         # a = t[0]
         # b = t[1]
-        n = n + 1
+        n += 1  # 实际上python并不支持n++这样的写法, 因为变量类型并不确定
     return 'done'
 
 
