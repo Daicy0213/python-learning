@@ -8,6 +8,7 @@ import math
 
 # 求数字的绝对值
 def my_abs(x):
+    # 如果x不是整型或浮点型则抛出异常
     if not isinstance(x, (int, float)):
         raise TypeError('bad operand type')
     if x >= 0:
@@ -26,6 +27,7 @@ def move(x, y, step, angle=0.0):
     return nx, ny
 
 
+# 可以将函数赋值给一个变量
 r = move(100, 100, 60, math.pi / 6)
 print(r)
 
@@ -43,3 +45,36 @@ print(quadratic(1, -4, 4))
 """
 二. 函数的参数
 """
+
+
+# 求平方或n次方, 设置默认参数
+def power(x, n=2):
+    s = 1
+    while n > 0:
+        n = n - 1
+        s = s * x
+    return s
+
+
+print('2的平方 %d' % power(2))
+print('2的三次方 %d' % power(2, 3))
+
+
+# 可变参数, 求a^2 + b^2 + c^2 + .....
+def calc(*nums):
+    sum_value = 0
+    for n in nums:
+        sum_value = sum_value + power(n)
+    return sum_value
+
+
+print(calc(1, 2, 3))
+
+
+# 关键字参数
+def print_person(name, age, **kw):
+    print('name:', name, 'age:', age, 'other:', kw)
+
+
+extra = {'city': 'Beijing', 'job': 'Engineer'}
+print_person('Kobe', 40, **extra)
