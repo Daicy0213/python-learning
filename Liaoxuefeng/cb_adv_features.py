@@ -12,7 +12,7 @@ print(next(g))
 
 # generator保存的是算法，每次调用next(g)，就计算出g的下一个元素的值，直到计算到最后一个元素，没有更多的元素时，抛出StopIteration的错误。
 # 也可以使用for循环进行迭代,因为generator也是可迭代对象
-print(type(isinstance(g)))
+print(type(g))
 for n in g:
     print(n)
 
@@ -24,7 +24,7 @@ def fib(max):
     while n < max:
         print(b)
         a, b = b, a + b
-        # 相当于 (a, b) = (b, a+b)
+        # 相当于 (a, b) = (b, a+b) 即
         # t = (b, a + b)
         # a = t[0]
         # b = t[1]
@@ -32,8 +32,17 @@ def fib(max):
     return 'done'
 
 
-# 一个斐波那切数列的生成器
-# 如果一个函数定义中包含yield关键字，那么这个函数就不再是一个普通函数，而是一个generator
+"""
+一个斐波那切数列的生成器
+把上面的print(b)改为yield b 即变成一个生成器
+如果一个函数定义中包含yield关键字，那么这个函数就不再是一个普通函数，而是一个generator
+这里，最难理解的就是generator函数和普通函数的执行流程不一样。
+普通函数是顺序执行，遇到return语句或者最后一行函数语句就返回。
+而变成generator的函数，在每次调用next()的时候执行，遇到yield语句返回，再次执行时从上次返回的yield语句处继续执行。
+需要注意的是 fib_generator(odd())
+"""
+
+
 def fib_generator(max):
     n, a, b = 0, 0, 1
     while n < max:
@@ -67,3 +76,15 @@ Python的Iterator对象表示的是一个数据流，Iterator对象可以被next
 只有在需要返回下一个数据时它才会计算。
 Iterator甚至可以表示一个无限大的数据流，例如全体自然数。而使用list是永远不可能存储全体自然数的。
 """
+
+# 首先获得Iterator对象:
+it = iter([1, 2, 3, 4, 5])
+# 循环:
+while True:
+    try:
+        # 获得下一个值:
+        x = next(it)
+        print(x)
+    except StopIteration:
+        # 遇到StopIteration就退出循环
+        break
