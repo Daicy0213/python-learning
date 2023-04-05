@@ -39,6 +39,14 @@ def f(x):
 r = map(f, [1, 2, 3, 4, 5])
 print("map求平方:", list(r))
 
+
+# 如果map(function，iterable...)中的function需要多个参数, 则可以传入多个数组
+def build(x, y):
+    return x * x + y * y
+
+
+print("求多组数字的平方和:", list(map(build, [1, 2, 3], [1, 2, 3])))
+
 """
 reduce
 reduce把一个函数作用在一个序列[x1, x2, x3, ...]上，这个函数必须接收两个参数，reduce把结果继续和序列的下一个元素做累积计算
