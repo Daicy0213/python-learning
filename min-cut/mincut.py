@@ -1,8 +1,10 @@
 import random
 import copy
+
+
 # 关于最大流和最小切的问题
 
-def randomMincut(vertex_set, edge_set):
+def random_min_cut(vertex_set, edge_set):
     while len(vertex_set) > 2:
         random_index = random.randint(0, len(edge_set) - 1)
         u, v = edge_set.pop(random_index)
@@ -39,7 +41,7 @@ if __name__ == '__main__':
     for i in range(epoch):
         v = copy.deepcopy(vertex_set)
         e = copy.deepcopy(edge_set)
-        rv, rw = randomMincut(v, e)
+        rv, rw = random_min_cut(v, e)
         # print(rv, rw)
         result.append((rv, rw))
 
