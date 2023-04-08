@@ -76,11 +76,11 @@ List = [m + n for m in 'ABC' for n in 'XYZ']  # 笛卡尔积
 print(List)
 
 print("列出当前目录下的所有文件和目录名")
-List = [d for d in os.listdir('.')]  # 列出当前目录下的所有文件和目录名
+List = [d for d in os.listdir('..')]  # 列出当前目录下的所有文件和目录名
 print(List)
 
 print('生成当前目录下的所有文件的编号与文件名对应的dict')
-listdir = os.listdir('.')
+listdir = os.listdir('..')
 dicta = {}
 i = 0
 for d in listdir:
