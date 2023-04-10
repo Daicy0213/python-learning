@@ -8,6 +8,7 @@ metaclass，直译为元类，简单的解释就是：
 连接起来就是：先定义metaclass，就可以创建类，最后创建实例。
 所以，metaclass允许你创建类或者修改类。换句话说，你可以把类看成是metaclass创建出来的“实例”。
 metaclass是Python面向对象里最难理解，也是最难使用的魔术代码。
+一旦你把一个类型 MyClass 的 metaclass 设置成 MyMeta，MyClass 就不再由原生的 type创建，而是会调用 MyMeta 的call运算符重载。
 """
 
 
@@ -28,9 +29,8 @@ class ListMetaclass(type):
 class MyList(list, metaclass=ListMetaclass):
     pass
 
+
 # 普通的list没有add()方法，而MyList中可以调用自定义的add()方法
 ml = MyList()
 ml.add(1)
 print(ml)
-
-

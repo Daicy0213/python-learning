@@ -13,6 +13,7 @@ class ModelMetaclass(type):
         mappings = dict()
         for k, v in attrs.items():
             if isinstance(v, Field):
+                # 保持类属性和列的映射关系到mappings字典
                 print('Found mapping: %s ==> %s' % (k, v))
                 mappings[k] = v
         for k in mappings.keys():
@@ -31,6 +32,19 @@ class Field(object):
 
     def __str__(self):
         return '<%s:%s>' % (self.__class__.__name__, self.name)
+
+
+# 在Field的基础上，进一步定义各种类型的Field，比如StringField，IntegerField（）
+class StringField(Field):
+    # 字段名为String 字段类型varchar
+    def __init__(self, name):
+        super(StringField, self).__init__(name, 'varchar(100)')
+
+
+class IntegerField(Field):
+    # 字段名为Integer 字段类型为bigint
+    def __init__(self, name):
+        super(IntegerField, self).__init__(name, 'bigint')
 
 
 # 基类
@@ -59,14 +73,3 @@ class Model(dict, metaclass=ModelMetaclass):
         sql = 'insert into %s (%s) values (%s)' % (self.__table__, ','.join(fields), ','.join(params))
         print('SQL: %s' % sql)
         print('ARGS: %s' % str(args))
-
-
-# 在Field的基础上，进一步定义各种类型的Field，比如StringField，IntegerField
-class StringField(Field):
-    def __init__(self, name):
-        super(StringField, self).__init__(name, 'varchar(100)')
-
-
-class IntegerField(Field):
-    def __init__(self, name):
-        super(IntegerField, self).__init__(name, 'bigint')
