@@ -26,4 +26,20 @@ Hello = type('Hello', (object,), dict(hello=fn))  # 创建Hello class
 h = Hello()
 h.hello()
 
-
+# 创建一个名叫MyCls的类， 继承自Hello， 类中有参数v1 = 123， 函数func(self，x):return x * x
+"""
+Note that:
+The first argument of the function 'func' in Class 'MyCls' must be 'self' 
+函数的第一个
+"""
+MyCls = type(
+    'MyCls',
+    (Hello,),
+    {
+        'v1': 5,
+        'func': lambda self, x: x * x})
+m = MyCls()
+m.hello()
+f = m.func
+print(f(m.v1))
+print(m.v1)
