@@ -49,7 +49,7 @@ def fib_generator(max):
         yield b
         a, b = b, a + b
         n = n + 1
-    return 'done'
+    return 'done'  # 这个生成器返回的字符串"done"并不是必须的，而是作为函数调用的时候可以返回一段字符串
 
 
 # 使用循环迭代斐波那切数列的生成器
