@@ -1,5 +1,6 @@
 """
 二. list与tuple
+list的内部是使用数组实现的, 所以列表 append 比 insert 快,
 """
 print('list与tuple')
 # list使用中括号[]
