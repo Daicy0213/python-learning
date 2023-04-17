@@ -9,6 +9,7 @@ i = True
 print(type(i))
 
 # 两种除法
+print('两种除法:')
 print(9 / 3)
 print(10 // 3)
 
