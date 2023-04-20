@@ -30,7 +30,7 @@ logging.basicConfig(level=logging.INFO)
 
 logging的另一个好处是通过简单的配置，一条语句可以同时输出到不同的地方，比如console和文件。
 """
-print('------------')
+print('-' * 10)
 
 logging.basicConfig(level=logging.INFO)
 

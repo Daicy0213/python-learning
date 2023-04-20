@@ -27,6 +27,7 @@ class Cat(Animal):
 if __name__ == '__main__':
     dog = Dog()
     dog.run()
-    print('--------run twice--------')
+
+    print('-' * 10 + 'run twice' + '-' * 10)
     # 可以直接调用父类的方法
     dog.run_twice()

@@ -6,7 +6,7 @@
 或者把数据写入这个文件对象（写文件）。
 """
 file_adr = '../../min-cut/data.txt'
-print("-------normal read--------")
+print("-" * 10 + "normal read" + "-" * 10)
 f = open(file_adr, 'r')
 read = f.read()
 print(read)
@@ -31,11 +31,11 @@ mode 的值包括 'r' ，表示文件只能读取；'w' 表示只能写入（现
 'a' 表示打开文件并追加内容，任何写入的数据会自动添加到文件末尾。
 'r+' 表示打开文件进行读写。mode 实参是可选的，省略时的默认值为 'r'。
 """
-print("---------with as read-----------")
+print('-' * 10 + 'with as read' + '-' * 10)
 with open('../../min-cut/data.txt', 'r') as f:
     for line in f.readlines():
         print(line.replace('1', '2').strip())  # 把末尾的'\n'删掉
-    print('----------------')
+    print('-' * 10)
     """
     Python 文件操作中,有一个玩意叫做指针，本名seek
     file对象,有个方法叫seek(),用来调整文件指针位置,而在我们读取一次后,指针指向EOF(文件末尾),再次读取当然是空字符串啦.

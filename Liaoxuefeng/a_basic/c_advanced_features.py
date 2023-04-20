@@ -34,7 +34,7 @@ print("trim函数的执行结果:", trim('  abc  '), "\n")
 """
 二. 迭代
 """
-print("------------迭代------------")
+print("-" * 15 + "迭代" + "-" * 15)
 L = [7, 1, 3, 9, 5]
 print("字符串是否可以迭代", isinstance('abc', Iterable))
 print("数字7的索引位置", L.index(7))
@@ -66,7 +66,7 @@ print()
 三. 列表生成式 List Comprehensions
 用来创建list的生成式
 """
-print("------------列表生成式 List Comprehensions------------")
+print("-" * 15 + "列表生成式 List Comprehensions" + "-" * 15)
 print("生成1-10的平方:")
 List = [x * x for x in range(1, 11)]  # 生成1-10的平方
 print(List)

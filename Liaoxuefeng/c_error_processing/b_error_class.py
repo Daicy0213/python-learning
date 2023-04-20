@@ -19,7 +19,7 @@ try:
 except BaseException as e:
     print(e)
 
-print('---------------')
+print('-' * 10)
 
 
 def foo(s):
