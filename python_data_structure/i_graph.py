@@ -1,6 +1,16 @@
 """有向图
 使用邻接表来实现图
 """
+from e_queue import Queue
+from enum import Enum
+from d_stack import Stack
+
+
+class State(Enum):
+    """关于顶点类中state的枚举类"""
+    Untraversed = 0
+    Traversing = 1
+    Traversed = 2
 
 
 class Vertex:
@@ -9,7 +19,25 @@ class Vertex:
 
     def __init__(self, key):
         self.id = key  # 顶点的id
+        self._state = State.Untraversed  # 用于遍历的状态, 详见State枚举类
+        self._depth = 0  # 遍历生成树的深度
         self.connectedTo = {}  # 相邻的顶点及对应权值
+
+    @property
+    def state(self):
+        return self._state
+
+    @state.setter
+    def state(self, value):
+        self._state = value
+
+    @property
+    def depth(self):
+        return self._depth
+
+    @depth.setter
+    def depth(self, value):
+        self._depth = value
 
     def add_neighbor(self, nbr, weight=0):
         """顶点添加相邻顶点
@@ -37,8 +65,9 @@ class Graph:
     """图类 Graph
     """
 
-    def __init__(self):
+    def __init__(self, directed=True):
         self.vert_list = {}  # 包含图中所有顶点
+        self._directed = directed
         self.num_vertices = 0
 
     def add_vertex(self, key):
@@ -65,7 +94,11 @@ class Graph:
             self.add_vertex(f)
         if t not in self.vert_list:
             self.add_vertex(t)
+
         self.vert_list[f].add_neighbor(self.vert_list[t], weight)
+
+        if not self._directed:  # 如果是无向图, 则添加双向的边
+            self.vert_list[t].add_neighbor(self.vert_list[f], weight)
 
     def get_vertices(self):
         return self.vert_list.keys()
@@ -74,8 +107,40 @@ class Graph:
         return iter(self.vert_list.values())
 
 
+def bfs(g, start):
+    """宽度优先遍历
+    g: 图类(class Graph)
+    start: 开始顶点的id
+    """
+    start = g.get_vertex(start)
+    start.depth = 0
+    vq = Queue()
+    vq.enq(start)
+    while vq.size() > 0:
+        current_v = vq.deq()
+        for nbr in current_v.get_connections():
+            if nbr.state is State.Untraversed:
+                nbr.state = State.Traversing
+                nbr.depth = current_v.depth + 1
+                vq.enq(nbr)
+        current_v.state = State.Traversed
+        print(current_v)
+
+
+def dfs(g, start):
+    """深度优先遍历
+    g: 图类(class Graph)
+    start: 开始顶点的id
+    """
+    start = g.get_vertex(start)
+    start.depth = 0
+    vs = Stack
+    pass
+
+
 if __name__ == '__main__':
-    g = Graph()
+    # 生成一个无向图
+    g = Graph(directed=False)
     for i in range(10):
         g.add_vertex(i)
     print(g.vert_list)
@@ -94,6 +159,10 @@ if __name__ == '__main__':
     g.add_edge(7, 9, 3)
     g.add_edge(8, 9, 4)
 
+    print("图的连接状态为:")
     for v in g:
         for w in v.get_connections():
             print("(%s , %s)" % (v.get_id(), w.get_id()))
+
+    print('bfs test:')
+    bfs(g, 0)
