@@ -23,7 +23,7 @@ class Stack:
     def pop(self):
         return self.items.pop()
 
-    def peek(self):
+    def top(self):
         return self.items[len(self.items) - 1]
 
     def size(self):
@@ -34,6 +34,6 @@ s = Stack()
 s.push(4)
 s.push(3)
 s.push(5)
-
-print(s.pop())
-print(s.peek())
+# [4,3,5]
+print(s.pop())  # 5, 栈内元素为[4,3]
+print(s.top())  # 3

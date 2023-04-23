@@ -107,35 +107,81 @@ class Graph:
         return iter(self.vert_list.values())
 
 
+def reset_vertex(g):
+    """重置顶点的深度和遍历标记的属性
+    """
+    for v in g:
+        v.depth = 0
+        v.state = State.Untraversed
+
+
 def bfs(g, start):
     """宽度优先遍历
     g: 图类(class Graph)
     start: 开始顶点的id
     """
+    reset_vertex(g)  # 重置遍历属性
     start = g.get_vertex(start)
     start.depth = 0
     vq = Queue()
     vq.enq(start)
     while vq.size() > 0:
-        current_v = vq.deq()
-        for nbr in current_v.get_connections():
+        current = vq.deq()
+        for nbr in current.get_connections():
             if nbr.state is State.Untraversed:
                 nbr.state = State.Traversing
-                nbr.depth = current_v.depth + 1
+                nbr.depth = current.depth + 1
                 vq.enq(nbr)
-        current_v.state = State.Traversed
-        print(current_v)
+        current.state = State.Traversed
+        print(current)
 
 
-def dfs(g, start):
+def dfs_stack(g, start):
     """深度优先遍历
+    使用栈而非递归的形式进行遍历, 优点是相比递归, 栈的规模更加可估计
+    g: 图类(class Graph)
+    start: 开始顶点的id
+
+    注意:
+     State.Untraversed 表示即未入栈 也未访问
+     State.Traversed 表示已经出栈且访问过
+    """
+    reset_vertex(g)  # 重置遍历属性
+    start = g.get_vertex(start)
+    start.depth = 0
+    vs = Stack()  # 初始化顶点栈
+    vs.push(start)
+    while vs.size() > 0:
+        current = vs.pop()
+        if current.state is not State.Traversed:
+            current.state = State.Traversed
+            print(current)
+        for nbr in current.get_connections():
+            if nbr.state is State.Untraversed:
+                vs.push(nbr)
+
+
+def dfs_rec(g, start):
+    """使用递归进行dfs遍历
     g: 图类(class Graph)
     start: 开始顶点的id
     """
-    start = g.get_vertex(start)
-    start.depth = 0
-    vs = Stack
-    pass
+    reset_vertex(g)  # 重置遍历属性
+    current = g.get_vertex(start)
+    for vertex in current.get_connections():
+        if vertex.state is not State.Traversed:
+            _dfs_rec_travel(vertex)
+
+
+def _dfs_rec_travel(current):
+    """递归函数
+    v: 顶点类(class Vertex)
+    """
+    current.state = State.Traversed
+    print(current)
+    for vertex in current.get_connections():
+        if vertex.state is not State.Traversed:
+            _dfs_rec_travel(vertex)
 
 
 if __name__ == '__main__':
@@ -164,5 +210,14 @@ if __name__ == '__main__':
         for w in v.get_connections():
             print("(%s , %s)" % (v.get_id(), w.get_id()))
 
+    # 使用bfs由0点开始遍历
     print('bfs test:')
     bfs(g, 0)
+
+    # 使用栈来进行dfs, 由0开始遍历
+    print('dfs_stack test:')
+    dfs_stack(g, 0)
+
+    print('dfs_rec test:')
+    # 使用递归来进行dfs, 由4开始遍历
+    dfs_rec(g, 4)
