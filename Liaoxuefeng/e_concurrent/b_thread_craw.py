@@ -42,7 +42,7 @@ def multi_thread():
         thread.start()
 
     for thread in threads:
-        thread.join()
+        thread.join()  # 等待线程终结
 
     print(f'多线程爬取的时间为{time.time() - start_time}s')
 
