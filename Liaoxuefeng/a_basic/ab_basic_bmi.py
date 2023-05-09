@@ -7,6 +7,7 @@ w = input('weight:')
 height = int(h) / 100
 weight = int(w)
 bmi = weight / height ** 2
+std_w = 25 * height ** 2
 print(bmi)
 print('BMI: %.2f' % bmi)
 if bmi < 18.5:
@@ -15,7 +16,10 @@ elif bmi < 25:
     print('体重正常')
 elif bmi < 28:
     print('体重过重')
+    print('正常体重应在%.1fkg以下' % std_w)
 elif bmi < 32:
     print('肥胖')
+    print('正常体重应在%.1fkg以下' % std_w)
 else:
     print('严重肥胖')
+    print('正常体重应在%.1fkg以下' % std_w)
