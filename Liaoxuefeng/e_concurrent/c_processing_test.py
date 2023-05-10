@@ -1,10 +1,26 @@
-import os
 import sys
+import os
+from multiprocessing import Process
 
+platform = sys.platform
 
-print(os.name)
-print(sys.platform)
-print(sys.argv)
-print(sys.maxsize)
-print(os.environ['PATH'])
+if platform == 'linux':
+    print('Process (%s) start...' % os.getpid())
+    # Only works on Unix/Linux/Mac:
+    pid = os.fork()
+    if pid == 0:
+        print('I am child process (%s) and my parent is %s.' % (os.getpid(), os.getppid()))
+    else:
+        print('I (%s) just created a child process (%s).' % (os.getpid(), pid))
+else:
+    # 子进程要执行的代码
+    def run_proc(name):
+        print('Run child process %s (%s)...' % (name, os.getpid()))
 
+    if __name__ == '__main__':
+        print('Parent process %s.' % os.getpid())
+        p = Process(target=run_proc, args=('test',))
+        print('Child process will start.')
+        p.start()
+        p.join()
+        print('Child process end.')
