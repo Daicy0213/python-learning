@@ -10,6 +10,7 @@ Python的multiprocessing模块不但支持多进程，其中managers子模块还
 现在，由于处理任务的进程任务繁重，希望把发送任务的进程和处理任务的进程分布到两台机器上。怎么用分布式进程实现？
 
 原有的Queue可以继续使用，但是，通过managers模块把Queue通过网络暴露出去，就可以让其他机器的进程访问Queue了。
+注意: queue.Queue 是线程安全的
 以下就是服务进程的代码
 """
 import random, time, queue
