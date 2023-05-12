@@ -1,5 +1,6 @@
 """
 使用单线程和多线程爬取网页
+并发详情页:https://www.bilibili.com/video/BV1bK411A7tV
 """
 
 import requests
