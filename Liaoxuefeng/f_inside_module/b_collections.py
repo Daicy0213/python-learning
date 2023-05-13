@@ -2,7 +2,7 @@
 """
 from collections import namedtuple
 
-"""ametuple
+"""nametuple
 如果直接使用tuple定义一个二维坐标(1, 2), 很难看出这个tuple是用来表示一个坐标的
 如果定义一个class来表示又有些小题大做, 那么就可以使用nametuple
 """
