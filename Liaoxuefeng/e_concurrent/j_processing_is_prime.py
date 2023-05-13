@@ -6,6 +6,7 @@ import time
 from concurrent.futures import ThreadPoolExecutor, ProcessPoolExecutor
 
 PRIMES = [112272535095293] * 50
+PRIMES_SINGLE = [10000769] * 1
 
 
 def is_prime(n):
@@ -30,6 +31,32 @@ def is_prime(n):
     return True
 
 
+def is_prime_complex(n):
+    """以下算法使用Clang可以快速得出结果
+    但是使用python则需要长时间的计算
+    主要用来对比python和Clang的计算速度差距
+    """
+    k = n
+    i = 3
+    factor_l = []
+    if n < 2:
+        return False
+    if n == 2:
+        return True
+    if n % 2 == 0:
+        return False
+    while k > 1:
+        if k % i == 0:
+            k /= i
+            factor_l.append(i)
+        else:
+            i += 2
+    if len(factor_l) > 1:
+        return False
+    else:
+        return True
+
+
 def single_thread():
     start = time.time()
     for num in PRIMES:
@@ -51,7 +78,17 @@ def multi_process():
     print(f"多进程程执行完毕, 用时:{time.time() - start}s")
 
 
+def multi_process_complex():
+    start = time.time()
+    with ProcessPoolExecutor() as pool:
+        pool.map(is_prime_complex, PRIMES_SINGLE)
+    print(f"多进程程执行完毕, 用时:{time.time() - start}s")
+
+
 if __name__ == '__main__':
-    single_thread()
-    multi_thread()
-    multi_process()
+    # single_thread()
+    # multi_thread()
+    # multi_process()
+    prime = PRIMES_SINGLE.pop(0)
+    print(is_prime_complex(prime))
+    multi_process_complex()

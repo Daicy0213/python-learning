@@ -44,5 +44,7 @@ print(sys.platform)
 # sys.argv[1:]之后的元素就是我们从程序外部输入的，而非代码本身的，从外部运行程序并给参数，这也是我们在cmd里面运行的原因。
 # 例如, 执行: python test.py a b c 则后续参数即为[a,b,c]
 print(sys.argv)
+# environ本质就是一个dict
+print(os.environ)
 # 环境变量
 print(os.environ['PATH'])
