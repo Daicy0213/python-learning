@@ -66,6 +66,7 @@ def get_md5(s):
 class User(object):
     def __init__(self, username, password):
         self.username = username
+        # 随机生成的盐
         self.salt = ''.join([chr(random.randint(48, 122)) for i in range(20)])
         self.password = get_md5(password + self.salt)
 
@@ -81,14 +82,7 @@ register('michael', '123456')
 register('bob', 'abc999')
 register('alice', 'alice2008')
 for username, user in db.items():
-    print(f"username: {username}, password: {user.password}")
-
-
-# db = {
-#     'michael': User('michael', '123456'),
-#     'bob': User('bob', 'abc999'),
-#     'alice': User('alice', 'alice2008')
-# }
+    print(f"username: {username}, password: {user.password}, salt: {user.salt}")
 
 
 def login(username, password):
