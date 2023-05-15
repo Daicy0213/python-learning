@@ -86,9 +86,9 @@ def multi_process_complex():
 
 
 if __name__ == '__main__':
-    # single_thread()
-    # multi_thread()
-    # multi_process()
-    prime = PRIMES_SINGLE.pop(0)
-    print(is_prime_complex(prime))
-    multi_process_complex()
+    single_thread()
+    multi_thread()
+    multi_process()
+    # prime = PRIMES_SINGLE.pop(0)
+    # print(is_prime_complex(prime))
+    # multi_process_complex()
