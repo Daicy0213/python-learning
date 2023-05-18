@@ -31,3 +31,9 @@ def is_valid_email(addr):
 
 print(is_valid_email('someone@gmail.com'))
 print(is_valid_email('someone@gmail@com'))
+
+# rtest = r'([A-Za-z ]+: )|([,A-Za-z ]+: )'
+rtest = r'mincut value: |, corresponding edges: '
+
+s = 'mincut value: 7270847.414634134, corresponding edges: [(13, 39)]'
+print(re.split(rtest, s))

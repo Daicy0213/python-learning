@@ -38,3 +38,27 @@ print(type(s))
 print('遍历循环set')
 for a in s:
     print(a)
+
+"""zip对象
+zip 函数能够把多个可迭代对象打包成一个元组构成的可迭代对象，它返回了一个 zip 对象，通过 tuple, list
+可以得到相应的打包结果
+"""
+print('zip对象')
+L1, L2, L3 = list('abc'), list('def'), list('hij')
+print(list(zip(L1, L2, L3)))
+print(tuple(zip(L1, L2, L3)))
+
+for i, j, k in zip(L1, L2, L3):
+    print(i, j, k)
+
+"""enumerate方法
+enumerate 是一种特殊的打包，它可以在迭代时绑定迭代元素的遍历序号
+"""
+print('enumerate方法')
+L = list('abcd')
+for index, value in enumerate(L):
+    print(index, value)
+
+print('使用zip对象也可以实现这样的功能:')
+for index, value in zip(range(len(L)), L):
+    print(index, value)
