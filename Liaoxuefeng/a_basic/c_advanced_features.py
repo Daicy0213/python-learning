@@ -10,7 +10,9 @@ from collections.abc import Iterable
 """
 
 # 1. range函数
-L = list(range(20))
+r = range(20)
+print(type(r))
+L = list(r)
 print(L)
 
 # 2. 字符串也可以看成是一种list，每个元素就是一个字符。因此，字符串也可以用切片操作，只是操作结果仍是字符串
