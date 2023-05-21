@@ -24,8 +24,11 @@ print('ABCDEFG'[::2])  # 每间隔一个打印
 
 # 3. 使用切片实现Java中的String.trim()
 def trim(s):
+    # 头部是空格
     while s[:1] == ' ':
         s = s[1:]
+
+    # 尾部是空格
     while s[-1:] == ' ':
         s = s[:-1]
     return s
