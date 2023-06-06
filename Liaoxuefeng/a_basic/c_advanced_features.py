@@ -7,11 +7,32 @@ from collections.abc import Iterable
 
 """
 一. 切片Slice
+a[start:stop]
+负数下标索引
+即：index可以取为负数，当其为-n时，对倒数第n个元素进行索引。
+
+超出有效索引范围
+当start或stop超出上文提到的有效索引范围时，切片操作不会抛出异常，而是进行截断。可以这样去理解截断机制：我们假象把索引范围扩充到全体整数，
+只不过小于或大于的区域对应空元素，在这个扩充后的数轴上进行切片，只需把最终结果中的所有空元素忽略即可。
+
+缺省
+start和stop都是可以缺省的，在缺省的情况下，Python的行为是尽可能取最大区间，具体来说：
+按照扩充索引范围的观点，start的缺省值是无穷小()，stop的缺省值是无穷大()。
+
+a[start:stop:step]
+step为正数
+当step为正数时，切片行为很容易理解，start和stop的截断和缺省规则也与简单切片完全一致
+
+step为负数
+当step为负数时，切片将其解释为从start出发以步长|step|逆序索引序列，此时，start和stop的截断依然遵循前述规则，但缺省发生一点变化，
+因为我们说过，在缺省的情况下，Python的行为是尽可能取最大区间，此时访问是逆序的，start应尽量取大，stop应尽量取小，才能保证区间最大，因此：
+按照扩充索引范围的观点，start的缺省值是无穷大()，stop的缺省值是无穷小()
+
 """
 
 # 1. range函数
 r = range(20)
-print(type(r))
+print(type(r))  # 返回的是range对象
 L = list(r)
 print(L)
 
