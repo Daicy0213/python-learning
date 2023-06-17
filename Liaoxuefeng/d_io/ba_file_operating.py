@@ -38,7 +38,7 @@ print("split path:\t\t\t", os.path.split(join_path))
 print("suffix:\t\t\t\t", os.path.splitext(join_path))
 
 # 重命名
-# os.rename('test.txt', 'test.py')
+os.rename('./test.txt', 'test.py')
 
 # 删除
 # os.remove('test.py')
