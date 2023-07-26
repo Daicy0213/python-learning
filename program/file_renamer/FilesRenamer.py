@@ -3,6 +3,9 @@ import os
 import sys
 
 
+"""批量文件重命名
+可以使用pyinstaller库打包成可执行文件
+"""
 # names_path = 'C:/Users/37245/Desktop/newName.txt'
 # folder_path = 'C:/Users/37245/Desktop/testfold'
 
