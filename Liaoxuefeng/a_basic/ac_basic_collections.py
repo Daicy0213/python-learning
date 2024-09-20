@@ -48,13 +48,13 @@ L1, L2, L3 = list('abc'), list('def'), list('hij')
 print(list(zip(L1, L2, L3)))
 print(tuple(zip(L1, L2, L3)))
 
-# [('a', 'd', 'h'), ('b', 'e', 'i'), ('c', 'f', 'j')]
-# (('a', 'd', 'h'), ('b', 'e', 'i'), ('c', 'f', 'j'))
+# [('a', 'd', 'h_mapreduce'), ('b', 'e', 'i'), ('c', 'f', 'j')]
+# (('a', 'd', 'h_mapreduce'), ('b', 'e', 'i'), ('c', 'f', 'j'))
 
 for i, j, k in zip(L1, L2, L3):
     print(i, j, k)
 
-# a d h
+# a d h_mapreduce
 # b e i
 # c f j
 

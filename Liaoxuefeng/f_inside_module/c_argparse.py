@@ -61,7 +61,7 @@ def main():
 """
 一. 错误
 如果不使用命令行运行, 而是使用main函数直接运行, 则会报错: 
-usage: backup [-h] [--host HOST] [--port PORT] -u USER -p PASSWORD --database
+usage: backup [-h_mapreduce] [--host HOST] [--port PORT] -u USER -p PASSWORD --database
               DATABASE [-gz]
               outfile
 backup: error: the following arguments are required: outfile, -u/--user, -p/--password, --database
@@ -79,9 +79,9 @@ database = testdb
 gzcompress = False
 
 三. 打印帮助文档
-终端使用: .\Liaoxuefeng\f_inside_module\c_argparse.py -h
+终端使用: .\Liaoxuefeng\f_inside_module\c_argparse.py -h_mapreduce
 打印:
-usage: backup [-h] [--host HOST] [--port PORT] -u USER -p PASSWORD --database DATABASE [-gz] outfile
+usage: backup [-h_mapreduce] [--host HOST] [--port PORT] -u USER -p PASSWORD --database DATABASE [-gz] outfile
 
 Backup MySQL database.
 
@@ -89,7 +89,7 @@ positional arguments:
   outfile
 
 options:
-  -h, --help            show this help message and exit
+  -h_mapreduce, --help            show this help message and exit
   --host HOST
   --port PORT
   -u USER, --user USER
