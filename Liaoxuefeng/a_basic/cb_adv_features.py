@@ -88,3 +88,49 @@ while True:
     except StopIteration:
         # 遇到StopIteration就退出循环
         break
+
+print("=" * 6)
+
+"""解包Unpacking操作符
+* 操作符在部分情况下可以用作解包（unpacking）操作符，它会将列表中的每个元素作为独立的参数传递给函数
+"""
+
+
+# 1. 如下可以使用列表元素解包为函数的参数
+def add(a, b, c):
+    return a + b + c
+
+
+numbers = [1, 2, 3]  # 有一个列表包含三个数字
+
+result = add(*numbers)  # 使用 * 来解包列表，将列表中的元素作为独立的参数传递给函数
+print(result)  # 输出: 6
+
+
+# 2. 如下可以使用元组元素解包为函数的参数
+def multiply(a, b):
+    return a * b
+
+
+tuple_numbers = (4, 5)  # 有一个元组包含两个数字
+
+result = multiply(*tuple_numbers)  # 使用 * 来解包元组，将元组中的元素作为独立的参数传递给函数
+print(result)  # 输出: 20
+
+
+# 3. 如下可以使用字典元素解包为函数的参数
+def display_info(name, age):
+    print(f"Name: {name}, Age: {age}")
+
+
+person = {'name': 'Alice', 'age': 30}  # 有一个字典包含两个键值对
+
+display_info(**person)  # 使用 ** 来解包字典，将字典中的键值对作为关键字参数传递给函数 输出: Name: Alice, Age: 30
+
+# 4.在列表或元组中解包
+list1 = [1, 2, 3]
+list2 = [4, 5, 6]
+
+# 使用 * 来解包 list1，将其元素插入到 list2 中
+combined_list = [*list1, *list2]
+print(combined_list)  # 输出: [1, 2, 3, 4, 5, 6]
