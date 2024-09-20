@@ -15,7 +15,7 @@ def knapsack(weights, values, capacity):
     """
     n = len(weights)
     # 初始化二维数组dp, dp[]
-    # 注意这里有个语法糖, 可以用乘法来获取数组例如 a = [0] * 3 表示一个包含三个0元素的一维的数组
+    # 注意这里有个语法糖, 列表生成器可以用乘法来获取数组例如 a = [0] * 3 表示一个包含三个0元素的一维的数组
     dp = [[0] * (capacity + 1) for _ in range(n + 1)]
 
     # 填充dp数组
