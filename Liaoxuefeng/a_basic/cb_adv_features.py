@@ -102,20 +102,20 @@ def add(a, b, c):
 
 
 numbers = [1, 2, 3]  # 有一个列表包含三个数字
-
-result = add(*numbers)  # 使用 * 来解包列表，将列表中的元素作为独立的参数传递给函数
+# 使用 * 来解包列表，将列表中的元素作为独立的参数传递给函数
+# 等价于 add(1, 2, 3)
+result = add(*numbers)
 print(result)  # 输出: 6
-
+print(*numbers)
 
 # 2. 如下可以使用元组元素解包为函数的参数
-def multiply(a, b):
-    return a * b
+# 如果我们有不确定数量的元素，* 可以捕获剩余的元素
 
 
-tuple_numbers = (4, 5)  # 有一个元组包含两个数字
-
-result = multiply(*tuple_numbers)  # 使用 * 来解包元组，将元组中的元素作为独立的参数传递给函数
-print(result)  # 输出: 20
+a, *b, c = (4, 5, 6, 7, 8)  # 有一个元组包含两个数字
+print(a)  # 输出: 1
+print(b)  # 输出: [2, 3, 4]
+print(c)  # 输出: 5
 
 
 # 3. 如下可以使用字典元素解包为函数的参数
@@ -125,7 +125,9 @@ def display_info(name, age):
 
 person = {'name': 'Alice', 'age': 30}  # 有一个字典包含两个键值对
 
-display_info(**person)  # 使用 ** 来解包字典，将字典中的键值对作为关键字参数传递给函数 输出: Name: Alice, Age: 30
+# 使用 ** 来解包字典，将字典中的键值对作为关键字参数传递给函数
+# 等价于 display_info(name='Alice', age=30)
+display_info(**person)  # 输出: Name: Alice, Age: 30
 
 # 4.在列表或元组中解包
 list1 = [1, 2, 3]
@@ -134,3 +136,9 @@ list2 = [4, 5, 6]
 # 使用 * 来解包 list1，将其元素插入到 list2 中
 combined_list = [*list1, *list2]
 print(combined_list)  # 输出: [1, 2, 3, 4, 5, 6]
+
+# 5.使用for循环
+person1 = {'name': 'LYC', 'age': 32}
+list = []
+list.append(person1)
+list.append(person)
