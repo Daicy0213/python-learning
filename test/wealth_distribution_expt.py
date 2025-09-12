@@ -11,8 +11,7 @@ import matplotlib.pyplot as plt
 
 n = 1000
 w = 100
-epoch = 10000
-strategy = "A"
+epoch = 50000
 
 
 class Player:
@@ -21,15 +20,12 @@ class Player:
         self.wealth = wealth
 
     def give(self):
-        if strategy == "A":
-            if self.wealth == 0:
-                return
-            else:
-                self.wealth = self.wealth - 1
-                id = np.random.randint(n)
-                return id
+        if self.wealth == 0:
+            return
         else:
-            pass
+            self.wealth = self.wealth - 1
+            id = np.random.randint(n)
+            return id
 
     def get(self):
         self.wealth = self.wealth + 1
