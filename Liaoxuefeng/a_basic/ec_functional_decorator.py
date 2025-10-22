@@ -38,7 +38,7 @@ wrapper()函数的参数定义是(*args, **kw)，因此，wrapper()函数可以�
 在wrapper()函数内，首先打印日志，再紧接着调用原始函数。
 """
 
-
+print('=' * 10)
 # 如果decorator本身需要传入参数，那就需要编写一个返回decorator的高阶函数，写出来会更复杂。
 def log(text):
     def decorator(func):

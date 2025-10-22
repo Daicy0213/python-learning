@@ -63,11 +63,11 @@ f2()
 f1()
 f2()
 
+print('---------闭包1---------')
+
 
 # nonlocal声明的变量不是局部变量,也不是全局变量,而是外部嵌套函数内的变量。
-def create_counter():
-    i = 0
-
+def create_counter(i):
     def counter():
         nonlocal i
 
@@ -78,7 +78,12 @@ def create_counter():
     return counter
 
 
-counterA = create_counter()
-print(counterA(), counterA(), counterA(), counterA(), counterA())  # 1 2 3 4 5
+counterA = create_counter(10)
+counterB = create_counter(0)
+print(counterA())  # 11
+print(counterA())  # 12
+print(counterB())  # 1
+print(counterA())  # 13
+print(counterB())  # 2
 # 可以获得counterA的所有闭包的信息
 print(counterA.__closure__)
