@@ -1,0 +1,27 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# AI tool local settings
+.claude/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Temp / output data
+numpy_learning/tmp_io/
+
+# OS
+.DS_Store
+Thumbs.db
